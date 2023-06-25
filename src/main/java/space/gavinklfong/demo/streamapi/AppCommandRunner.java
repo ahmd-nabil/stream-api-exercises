@@ -23,6 +23,8 @@ public class AppCommandRunner implements CommandLineRunner {
 	@Autowired
 	private ProductRepo productRepos;
 
+	@Autowired
+	private Exercises exercises;
 	@Transactional
 	@Override
 	public void run(String... args) throws Exception {
@@ -37,6 +39,8 @@ public class AppCommandRunner implements CommandLineRunner {
 		log.info("Products:");
 		productRepos.findAll()
 				.forEach(p -> log.info(p.toString()));
+
+		exercises.solve();
 	}
 
 }
